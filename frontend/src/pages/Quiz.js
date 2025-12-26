@@ -25,7 +25,7 @@ function Quiz() {
   const submitQuiz = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/quiz/submit",
+        "https://online-quiz-app-imnm.onrender.com//api/quiz/submit",
         { answers }
       );
 
