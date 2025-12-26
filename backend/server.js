@@ -9,7 +9,8 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://quizuser:<db_password>@cluster0.hmsezjr.mongodb.net/?appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
+
 .then(() => {
     console.log("MongoDB Connected Successfully");
 })
