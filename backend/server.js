@@ -7,6 +7,13 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+console.log("✅ server.js started");
+
+const authRoutes = require("./routes/authRoutes");
+console.log("✅ authRoutes imported");
+
+app.use("/api/auth", authRoutes);
+
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
