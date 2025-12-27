@@ -10,7 +10,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://online-quiz-app-imnm.onrender.com//api/auth/login",
+        "http://localhost:5000/api/auth/login",
         {
           email: email,
           password: password

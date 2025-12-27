@@ -29,7 +29,7 @@ function Quiz() {
         { answers }
       );
 
-      navigate("/result", {
+     navigate("/result", {
   state: {
     score: response.data.score,
     total: response.data.total

@@ -1,22 +1,30 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// DIRECT TEST ROUTE
-app.post("/api/auth/register", (req, res) => {
-  res.json({ message: "DIRECT REGISTER ROUTE WORKING" });
+// MongoDB Connection
+mongoose.connect("mongodb://127.0.0.1:27017/quizapp")
+.then(() => {
+    console.log("MongoDB Connected Successfully");
+})
+.catch((error) => {
+    console.log("MongoDB Connection Error:", error);
 });
 
-// TEST GET ROUTE
-app.get("/test", (req, res) => {
-  res.send("Backend working");
+// Test Route
+app.get("/", (req, res) => {
+    res.send("Quiz App Backend Running");
 });
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/quiz", require("./routes/quizRoutes"));
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+// Start Server
+app.listen(5000, () => {
+    console.log("Server running on port 5000");
 });
